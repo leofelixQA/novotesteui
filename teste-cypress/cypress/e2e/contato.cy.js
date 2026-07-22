@@ -6,8 +6,9 @@ cy.visit("index.html")
 
 describe('funcionalidade: contato', () => {
   it('deve preencher formulario com sucesso', () => {
+    let nome = faker.person.firstName()
     let email = `teste${Date.now()}@teste`
-  cy.get('[name="name"]').type("leo")
+  cy.get('[name="name"]').type(nome)
   cy.get('[name="email"]').type(email)
   cy.get('[name="subject"]').select("Sugestões")
   cy.get('[name="message"]').type("qualquer mensagem")
@@ -16,8 +17,9 @@ describe('funcionalidade: contato', () => {
   })
 
   it('deve validar erro ao enviar sem preencher o nome', () => {
+    let email = faker.internet.email()
   //cy.get('[name="name"]').type("leo")
-  cy.get('[name="email"]').type("teste@teste.com")
+  cy.get('[name="email"]').type(email)
   cy.get('[name="subject"]').select("Sugestões")
   cy.get('[name="message"]').type("qualquer mensagem")
   cy.get('#btn-submit').click()
@@ -25,7 +27,9 @@ describe('funcionalidade: contato', () => {
   })
 
   it('deve validar erro ao enviar sem preencher o e-mail', () => {
-  cy.get('[name="name"]').type("leo")
+    let nome = faker.person.firstName()
+    let email = faker.internet.email()
+  cy.get('[name="name"]').type(nome)
   //cy.get('[name="email"]').type("teste@teste.com")
   cy.get('[name="subject"]').select("Sugestões")
   cy.get('[name="message"]').type("qualquer mensagem")
@@ -34,8 +38,10 @@ describe('funcionalidade: contato', () => {
   });
 
   it('deve validar erro ao enviar sem selecionar o assunto', () => {
-  cy.get('[name="name"]').type("leo")
-  cy.get('[name="email"]').type("teste@teste.com")
+    let email = `teste${Date.now()}@teste`
+    let nome = faker.person.firstName()
+  cy.get('[name="name"]').type(nome)
+  cy.get('[name="email"]').type(email)
   //cy.get('[name="subject"]').select("Sugestões")
   cy.get('[name="message"]').type("qualquer mensagem")
   cy.get('#btn-submit').click()
@@ -43,8 +49,10 @@ describe('funcionalidade: contato', () => {
   });
 
   it('deve validar erro ao enviar sem escrever a mensagem', () => {
-  cy.get('[name="name"]').type("leo")
-  cy.get('[name="email"]').type("teste@teste.com")
+    let nome = faker.person.firstName()
+    let email = `teste${Date.now()}@teste`
+  cy.get('[name="name"]').type(nome)
+  cy.get('[name="email"]').type(email)
   cy.get('[name="subject"]').select("Sugestões")
   //cy.get('[name="message"]').type("qualquer mensagem")
   cy.get('#btn-submit').click()
