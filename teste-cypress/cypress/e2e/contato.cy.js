@@ -3,9 +3,10 @@ cy.visit("index.html")
 });
 
 describe('funcionalidade: contato', () => {
-  it('deve preencher formulario com sucesso', () => {
+  it.only('deve preencher formulario com sucesso', () => {
+    let email = `teste${Date.now()}@teste.com`
   cy.get('[name="name"]').type("leo")
-  cy.get('[name="email"]').type("teste@teste.com")
+  cy.get('[name="email"]').type(email)
   cy.get('[name="subject"]').select("Sugestões")
   cy.get('[name="message"]').type("qualquer mensagem")
   cy.get('#btn-submit').click()
