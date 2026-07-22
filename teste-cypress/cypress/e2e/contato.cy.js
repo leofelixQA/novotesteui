@@ -1,10 +1,12 @@
+import { faker } from '@faker-js/faker';
+
 beforeEach(() => {
 cy.visit("index.html")
 });
 
 describe('funcionalidade: contato', () => {
-  it.only('deve preencher formulario com sucesso', () => {
-    let email = `teste${Date.now()}@teste.com`
+  it('deve preencher formulario com sucesso', () => {
+    let email = `teste${Date.now()}@teste`
   cy.get('[name="name"]').type("leo")
   cy.get('[name="email"]').type(email)
   cy.get('[name="subject"]').select("Sugestões")
